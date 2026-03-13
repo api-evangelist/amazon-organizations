@@ -1,0 +1,152 @@
+openapi: 3.1.0
+info:
+  title: AWS Organizations API
+  description: >-
+    The AWS Organizations API enables programmatic management of your
+    organization. You can create accounts, organize them into
+    organizational units, apply policies, and manage member accounts
+    through this interface.
+  version: '2016-11-28'
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+  - url: https://organizations.{region}.amazonaws.com
+    description: AWS Organizations regional endpoint
+    variables:
+      region:
+        default: us-east-1
+        description: AWS region
+        enum:
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+          - eu-west-1
+          - eu-central-1
+          - ap-northeast-1
+          - ap-southeast-1
+security:
+  - sigv4: []
+tags:
+  - name: Organizations
+    description: Operations for creating and managing organizations
+  - name: Accounts
+    description: Operations for managing member accounts
+  - name: Organizational Units
+    description: Operations for managing organizational units
+  - name: Policies
+    description: Operations for managing organization policies
+paths:
+  /:
+    post:
+      operationId: CreateOrganization
+      summary: Create an organization
+      description: Creates an AWS organization with the calling account as the management account.
+      tags:
+        - Organizations
+      requestBody:
+        required: true
+        content:
+          application/x-amz-json-1.1:
+            schema:
+              type: object
+              properties:
+                FeatureSet:
+                  type: string
+                  enum:
+                    - ALL
+                    - CONSOLIDATED_BILLING
+      responses:
+        '200':
+          description: Organization created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+components:
+  securitySchemes:
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4
+  schemas:
+    Organization:
+      type: object
+      properties:
+        Id:
+          type: string
+        Arn:
+          type: string
+        FeatureSet:
+          type: string
+          enum:
+            - ALL
+            - CONSOLIDATED_BILLING
+        MasterAccountArn:
+          type: string
+        MasterAccountId:
+          type: string
+        MasterAccountEmail:
+          type: string
+    Account:
+      type: object
+      properties:
+        Id:
+          type: string
+        Arn:
+          type: string
+        Email:
+          type: string
+        Name:
+          type: string
+        Status:
+          type: string
+          enum:
+            - ACTIVE
+            - SUSPENDED
+            - PENDING_CLOSURE
+        JoinedMethod:
+          type: string
+          enum:
+            - INVITED
+            - CREATED
+        JoinedTimestamp:
+          type: string
+          format: date-time
+    OrganizationalUnit:
+      type: object
+      properties:
+        Id:
+          type: string
+        Arn:
+          type: string
+        Name:
+          type: string
+    Policy:
+      type: object
+      properties:
+        PolicySummary:
+          type: object
+          properties:
+            Id:
+              type: string
+            Arn:
+              type: string
+            Name:
+              type: string
+            Type:
+              type: string
+              enum:
+                - SERVICE_CONTROL_POLICY
+                - TAG_POLICY
+                - BACKUP_POLICY
+                - AISERVICES_OPT_OUT_POLICY
+        Content:
+          type: string

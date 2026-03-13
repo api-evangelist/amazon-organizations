@@ -1,0 +1,132 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "orgs": "https://docs.aws.amazon.com/organizations/latest/APIReference/",
+    "aws": "https://aws.amazon.com/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Organization": {
+      "@id": "orgs:API_DescribeOrganization",
+      "@context": {
+        "Id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "Arn": {
+          "@id": "orgs:organizationArn",
+          "@type": "xsd:string"
+        },
+        "FeatureSet": {
+          "@id": "orgs:featureSet",
+          "@type": "xsd:string"
+        },
+        "MasterAccountArn": {
+          "@id": "orgs:masterAccountArn",
+          "@type": "xsd:string"
+        },
+        "MasterAccountId": {
+          "@id": "orgs:masterAccountId",
+          "@type": "xsd:string"
+        },
+        "MasterAccountEmail": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "AvailablePolicyTypes": {
+          "@id": "orgs:availablePolicyTypes",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "Account": {
+      "@id": "orgs:API_DescribeAccount",
+      "@context": {
+        "Id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "Arn": {
+          "@id": "orgs:accountArn",
+          "@type": "xsd:string"
+        },
+        "Email": {
+          "@id": "schema:email",
+          "@type": "xsd:string"
+        },
+        "Name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "Status": {
+          "@id": "orgs:accountStatus",
+          "@type": "xsd:string"
+        },
+        "JoinedMethod": {
+          "@id": "orgs:joinedMethod",
+          "@type": "xsd:string"
+        },
+        "JoinedTimestamp": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "OrganizationalUnit": {
+      "@id": "orgs:API_DescribeOrganizationalUnit",
+      "@context": {
+        "Id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "Arn": {
+          "@id": "orgs:ouArn",
+          "@type": "xsd:string"
+        },
+        "Name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Policy": {
+      "@id": "orgs:API_DescribePolicy",
+      "@context": {
+        "PolicySummary": {
+          "@id": "orgs:policySummary",
+          "@type": "orgs:PolicySummary"
+        },
+        "Content": {
+          "@id": "orgs:policyContent",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Root": {
+      "@id": "orgs:API_ListRoots",
+      "@context": {
+        "Id": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "Arn": {
+          "@id": "orgs:rootArn",
+          "@type": "xsd:string"
+        },
+        "Name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "PolicyTypes": {
+          "@id": "orgs:policyTypes",
+          "@container": "@list"
+        }
+      }
+    }
+  }
+}

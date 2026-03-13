@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.apievangelist.com/amazon-organizations/organization-definition",
+  "title": "AWS Organizations Definition",
+  "description": "Schema defining the structure of an AWS Organization resource, including accounts, organizational units, policies, and the organization hierarchy.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "The unique identifier of the organization.",
+      "pattern": "^o-[a-z0-9]{10,32}$"
+    },
+    "Arn": {
+      "type": "string",
+      "description": "The Amazon Resource Name of the organization."
+    },
+    "FeatureSet": {
+      "type": "string",
+      "enum": [
+        "ALL",
+        "CONSOLIDATED_BILLING"
+      ],
+      "description": "Specifies the functionality available to the organization."
+    },
+    "MasterAccountArn": {
+      "type": "string",
+      "description": "The ARN of the management account."
+    },
+    "MasterAccountId": {
+      "type": "string",
+      "description": "The unique identifier of the management account.",
+      "pattern": "^\\d{12}$"
+    },
+    "MasterAccountEmail": {
+      "type": "string",
+      "format": "email",
+      "description": "The email address associated with the management account."
+    },
+    "AvailablePolicyTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PolicyTypeSummary"
+      },
+      "description": "A list of policy types enabled for the organization."
+    },
+    "Accounts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Account"
+      },
+      "description": "The member accounts in the organization."
+    },
+    "OrganizationalUnits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OrganizationalUnit"
+      },
+      "description": "The organizational units in the organization."
+    },
+    "Policies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Policy"
+      },
+      "description": "The policies attached in the organization."
+    },
+    "Roots": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Root"
+      },
+      "description": "The root containers in the organization."
+    }
+  },
+  "$defs": {
+    "Account": {
+      "type": "object",
+      "description": "An AWS account that is a member of the organization.",
+      "properties": {
+        "Id": {
+          "type": "string",
+          "description": "The unique identifier of the account.",
+          "pattern": "^\\d{12}$"
+        },
+        "Arn": {
+          "type": "string",
+          "description": "The ARN of the account."
+        },
+        "Email": {
+          "type": "string",
+          "format": "email",
+          "description": "The email address associated with the account."
+        },
+        "Name": {
+          "type": "string",
+          "description": "The friendly name of the account.",
+          "minLength": 1,
+          "maxLength": 50
+        },
+        "Status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "SUSPENDED",
+            "PENDING_CLOSURE"
+          ],
+          "description": "The status of the account."
+        },
+        "JoinedMethod": {
+          "type": "string",
+          "enum": [
+            "INVITED",
+            "CREATED"
+          ],
+          "description": "The method by which the account joined the organization."
+        },
+        "JoinedTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date the account became a part of the organization."
+        }
+      }
+    },
+    "OrganizationalUnit": {
+      "type": "object",
+      "description": "A container for accounts within a root that enables grouping and policy application.",
+      "properties": {
+        "Id": {
+          "type": "string",
+          "description": "The unique identifier of the organizational unit.",
+          "pattern": "^ou-[a-z0-9]{4,32}-[a-z0-9]{8,32}$"
+        },
+        "Arn": {
+          "type": "string",
+          "description": "The ARN of the organizational unit."
+        },
+        "Name": {
+          "type": "string",
+          "description": "The friendly name of the organizational unit.",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      }
+    },
+    "Policy": {
+      "type": "object",
+      "description": "A policy that defines controls for your organization.",
+      "properties": {
+        "PolicySummary": {
+          "type": "object",
+          "properties": {
+            "Id": {
+              "type": "string",
+              "description": "The unique identifier of the policy."
+            },
+            "Arn": {
+              "type": "string",
+              "description": "The ARN of the policy."
+            },
+            "Name": {
+              "type": "string",
+              "description": "The friendly name of the policy.",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "Description": {
+              "type": "string",
+              "description": "The description of the policy.",
+              "maxLength": 512
+            },
+            "Type": {
+              "type": "string",
+              "enum": [
+                "SERVICE_CONTROL_POLICY",
+                "TAG_POLICY",
+                "BACKUP_POLICY",
+                "AISERVICES_OPT_OUT_POLICY"
+              ],
+              "description": "The type of policy."
+            },
+            "AwsManaged": {
+              "type": "boolean",
+              "description": "Whether the policy is an AWS-managed policy."
+            }
+          }
+        },
+        "Content": {
+          "type": "string",
+          "description": "The text content of the policy."
+        }
+      }
+    },
+    "Root": {
+      "type": "object",
+      "description": "The top-level container in the hierarchy of organizational units.",
+      "properties": {
+        "Id": {
+          "type": "string",
+          "description": "The unique identifier of the root.",
+          "pattern": "^r-[a-z0-9]{4,32}$"
+        },
+        "Arn": {
+          "type": "string",
+          "description": "The ARN of the root."
+        },
+        "Name": {
+          "type": "string",
+          "description": "The friendly name of the root."
+        },
+        "PolicyTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PolicyTypeSummary"
+          }
+        }
+      }
+    },
+    "PolicyTypeSummary": {
+      "type": "object",
+      "properties": {
+        "Type": {
+          "type": "string",
+          "enum": [
+            "SERVICE_CONTROL_POLICY",
+            "TAG_POLICY",
+            "BACKUP_POLICY",
+            "AISERVICES_OPT_OUT_POLICY"
+          ]
+        },
+        "Status": {
+          "type": "string",
+          "enum": [
+            "ENABLED",
+            "PENDING_ENABLE",
+            "PENDING_DISABLE"
+          ]
+        }
+      }
+    }
+  }
+}
