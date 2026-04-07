@@ -36,12 +36,6 @@ security:
 tags:
   - name: Organizations
     description: Operations for creating and managing organizations
-  - name: Accounts
-    description: Operations for managing member accounts
-  - name: Organizational Units
-    description: Operations for managing organizational units
-  - name: Policies
-    description: Operations for managing organization policies
 paths:
   /:
     post:
