@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: AWS Organizations API
+  title: Amazon Organizations AWS Organizations API
   description: >-
     The AWS Organizations API enables programmatic management of your
     organization. You can create accounts, organize them into
@@ -46,7 +46,7 @@ paths:
   /:
     post:
       operationId: CreateOrganization
-      summary: Create an organization
+      summary: Amazon Organizations Create an organization
       description: Creates an AWS organization with the calling account as the management account.
       tags:
         - Organizations
