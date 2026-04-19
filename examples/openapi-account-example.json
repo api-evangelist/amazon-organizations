@@ -1,0 +1,9 @@
+{
+  "Id": "resource-abc123",
+  "Arn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "Email": "example-string",
+  "Name": "my-resource",
+  "Status": "SUSPENDED",
+  "JoinedMethod": "INVITED",
+  "JoinedTimestamp": "2025-03-15T14:30:00Z"
+}

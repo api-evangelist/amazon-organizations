@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-organizations/refs/heads/main/json-schema/openapi-organization-schema.json",
+  "title": "Organization",
+  "description": "Organization schema from Amazon Organizations",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Arn": {
+      "type": "string"
+    },
+    "FeatureSet": {
+      "type": "string",
+      "enum": [
+        "ALL",
+        "CONSOLIDATED_BILLING"
+      ]
+    },
+    "MasterAccountArn": {
+      "type": "string"
+    },
+    "MasterAccountId": {
+      "type": "string"
+    },
+    "MasterAccountEmail": {
+      "type": "string"
+    }
+  }
+}

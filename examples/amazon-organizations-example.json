@@ -1,0 +1,23 @@
+{
+  "Id": "resource-abc123",
+  "Arn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "FeatureSet": "CONSOLIDATED_BILLING",
+  "MasterAccountArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "MasterAccountId": "resource-abc123",
+  "MasterAccountEmail": "example-string",
+  "AvailablePolicyTypes": [
+    "example-ref"
+  ],
+  "Accounts": [
+    "example-ref"
+  ],
+  "OrganizationalUnits": [
+    "example-ref"
+  ],
+  "Policies": [
+    "example-ref"
+  ],
+  "Roots": [
+    "example-ref"
+  ]
+}

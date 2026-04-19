@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-organizations/refs/heads/main/json-structure/openapi-policy-structure.json",
+  "name": "Policy",
+  "description": "Policy schema from Amazon Organizations",
+  "type": "object",
+  "properties": {
+    "PolicySummary": {
+      "type": "object",
+      "properties": {
+        "Id": {
+          "type": "string"
+        },
+        "Arn": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string",
+          "enum": [
+            "SERVICE_CONTROL_POLICY",
+            "TAG_POLICY",
+            "BACKUP_POLICY",
+            "AISERVICES_OPT_OUT_POLICY"
+          ]
+        }
+      }
+    },
+    "Content": {
+      "type": "string"
+    }
+  }
+}

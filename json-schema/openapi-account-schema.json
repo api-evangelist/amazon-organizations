@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-organizations/refs/heads/main/json-schema/openapi-account-schema.json",
+  "title": "Account",
+  "description": "Account schema from Amazon Organizations",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Arn": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "SUSPENDED",
+        "PENDING_CLOSURE"
+      ]
+    },
+    "JoinedMethod": {
+      "type": "string",
+      "enum": [
+        "INVITED",
+        "CREATED"
+      ]
+    },
+    "JoinedTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

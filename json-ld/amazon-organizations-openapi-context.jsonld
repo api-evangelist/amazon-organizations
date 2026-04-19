@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "organizations": "https://organizations.amazonaws.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Account": "organizations:Account",
+    "Organization": "organizations:Organization",
+    "OrganizationalUnit": "organizations:OrganizationalUnit",
+    "Policy": "organizations:Policy",
+    "Arn": {
+      "@id": "organizations:Arn",
+      "@type": "xsd:string"
+    },
+    "Content": {
+      "@id": "organizations:Content",
+      "@type": "xsd:string"
+    },
+    "Email": {
+      "@id": "organizations:Email",
+      "@type": "xsd:string"
+    },
+    "FeatureSet": {
+      "@id": "organizations:FeatureSet",
+      "@type": "xsd:string"
+    },
+    "Id": {
+      "@id": "organizations:Id",
+      "@type": "xsd:string"
+    },
+    "JoinedMethod": {
+      "@id": "organizations:JoinedMethod",
+      "@type": "xsd:string"
+    },
+    "JoinedTimestamp": {
+      "@id": "organizations:JoinedTimestamp",
+      "@type": "xsd:dateTime"
+    },
+    "MasterAccountArn": {
+      "@id": "organizations:MasterAccountArn",
+      "@type": "xsd:string"
+    },
+    "MasterAccountEmail": {
+      "@id": "organizations:MasterAccountEmail",
+      "@type": "xsd:string"
+    },
+    "MasterAccountId": {
+      "@id": "organizations:MasterAccountId",
+      "@type": "xsd:string"
+    },
+    "Name": {
+      "@id": "organizations:Name",
+      "@type": "xsd:string"
+    },
+    "PolicySummary": {
+      "@id": "organizations:PolicySummary",
+      "@type": "@id"
+    },
+    "Status": {
+      "@id": "organizations:Status",
+      "@type": "xsd:string"
+    },
+    "Type": {
+      "@id": "organizations:Type",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon Organizations API Workflow
+  description: Workflow capability composing Amazon Organizations APIs for developers and operators.
+  tags:
+  - Amazon Organizations
+  - AWS
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_SIGV4_AUTH: AWS_SIGV4_AUTH
+capability:
+  consumes:
+  - import: organizations
+    location: ./shared/organizations.yaml
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: amazon-organizations-api
+    description: Unified REST API for Amazon Organizations.
+    resources:
+    - path: /v1/resources
+      name: resources
+      description: Primary Amazon Organizations resources
+      operations:
+      - method: GET
+        name: list-resources
+        description: List Amazon Organizations resources
+        call: openapi.yml.list
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: amazon-organizations-mcp
+    transport: http
+    description: MCP server for AI-assisted Amazon Organizations operations.
+    tools:
+    - name: list-openapi.yml
+      description: List and manage openapi.yml resources
+      hints:
+        readOnly: true
+        openWorld: true
+      call: openapi.yml.list
+      outputParameters:
+      - type: object
+        mapping: $.

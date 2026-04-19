@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-organizations/refs/heads/main/json-schema/openapi-organizational-unit-schema.json",
+  "title": "OrganizationalUnit",
+  "description": "OrganizationalUnit schema from Amazon Organizations",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Arn": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string"
+    }
+  }
+}

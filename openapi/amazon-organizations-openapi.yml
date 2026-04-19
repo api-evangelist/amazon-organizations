@@ -16,34 +16,34 @@ info:
   x-logo:
     url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 servers:
-  - url: https://organizations.{region}.amazonaws.com
-    description: AWS Organizations regional endpoint
-    variables:
-      region:
-        default: us-east-1
-        description: AWS region
-        enum:
-          - us-east-1
-          - us-east-2
-          - us-west-1
-          - us-west-2
-          - eu-west-1
-          - eu-central-1
-          - ap-northeast-1
-          - ap-southeast-1
+- url: https://organizations.{region}.amazonaws.com
+  description: AWS Organizations regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-central-1
+      - ap-northeast-1
+      - ap-southeast-1
 security:
-  - sigv4: []
+- sigv4: []
 tags:
-  - name: Organizations
-    description: Operations for creating and managing organizations
+- name: Organizations
+  description: Operations for creating and managing organizations
 paths:
   /:
     post:
       operationId: CreateOrganization
-      summary: Amazon Organizations Create an organization
+      summary: Amazon Organizations Create an Organization
       description: Creates an AWS organization with the calling account as the management account.
       tags:
-        - Organizations
+      - Organizations
       requestBody:
         required: true
         content:
@@ -54,8 +54,8 @@ paths:
                 FeatureSet:
                   type: string
                   enum:
-                    - ALL
-                    - CONSOLIDATED_BILLING
+                  - ALL
+                  - CONSOLIDATED_BILLING
       responses:
         '200':
           description: Organization created successfully
@@ -63,6 +63,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Organization'
+              examples:
+                CreateOrganization200Example:
+                  summary: Default CreateOrganization 200 response
+                  x-microcks-default: true
+                  value:
+                    Id: resource-abc123
+                    Arn: arn:aws:service:us-east-1:123456789012:resource/example
+                    FeatureSet: ALL
+                    MasterAccountArn: arn:aws:service:us-east-1:123456789012:resource/example
+                    MasterAccountId: resource-abc123
+                    MasterAccountEmail: example-string
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     sigv4:
@@ -81,8 +95,8 @@ components:
         FeatureSet:
           type: string
           enum:
-            - ALL
-            - CONSOLIDATED_BILLING
+          - ALL
+          - CONSOLIDATED_BILLING
         MasterAccountArn:
           type: string
         MasterAccountId:
@@ -103,14 +117,14 @@ components:
         Status:
           type: string
           enum:
-            - ACTIVE
-            - SUSPENDED
-            - PENDING_CLOSURE
+          - ACTIVE
+          - SUSPENDED
+          - PENDING_CLOSURE
         JoinedMethod:
           type: string
           enum:
-            - INVITED
-            - CREATED
+          - INVITED
+          - CREATED
         JoinedTimestamp:
           type: string
           format: date-time
@@ -138,9 +152,9 @@ components:
             Type:
               type: string
               enum:
-                - SERVICE_CONTROL_POLICY
-                - TAG_POLICY
-                - BACKUP_POLICY
-                - AISERVICES_OPT_OUT_POLICY
+              - SERVICE_CONTROL_POLICY
+              - TAG_POLICY
+              - BACKUP_POLICY
+              - AISERVICES_OPT_OUT_POLICY
         Content:
           type: string

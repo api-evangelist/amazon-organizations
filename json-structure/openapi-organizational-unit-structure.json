@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-organizations/refs/heads/main/json-structure/openapi-organizational-unit-structure.json",
+  "name": "OrganizationalUnit",
+  "description": "OrganizationalUnit schema from Amazon Organizations",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Arn": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string"
+    }
+  }
+}
