@@ -1,4 +1,4 @@
-naftiko: 1.0.0-alpha1
+naftiko: 1.0.0-alpha2
 info:
   label: Amazon Organizations API Workflow
   description: Workflow capability composing Amazon Organizations APIs for developers and operators.
@@ -6,15 +6,38 @@ info:
   - Amazon Organizations
   - AWS
   created: '2026-04-19'
-  modified: '2026-04-19'
+  modified: '2026-05-06'
 binds:
 - namespace: env
   keys:
     AWS_SIGV4_AUTH: AWS_SIGV4_AUTH
 capability:
   consumes:
-  - import: organizations
-    location: ./shared/organizations.yaml
+  - type: http
+    namespace: openapi.yml
+    baseUri: https://organizations.{region}.amazonaws.com
+    description: The AWS Organizations API enables programmatic management of your organization. You can create accou
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{AWS_SIGV4_AUTH}}'
+      placement: header
+    resources:
+    - name: organizations
+      path: /organizations
+      description: Organizations operations for Amazon Organizations AWS Organizations API
+      operations:
+      - name: CreateOrganization
+        method: POST
+        description: Amazon Organizations Create an Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
   exposes:
   - type: rest
     port: 8080
