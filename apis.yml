@@ -34,11 +34,11 @@ apis:
     url: openapi/amazon-organizations-openapi.yml
   - type: JSON Schema
     url: json-schema/amazon-organizations-schema.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/amazon-organizations-context.jsonld
   - type: Pricing
     url: https://aws.amazon.com/organizations/pricing/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://aws.amazon.com/organizations/getting-started/
   - type: FAQ
     url: https://aws.amazon.com/organizations/faqs/
@@ -46,7 +46,7 @@ apis:
     url: https://aws.amazon.com/organizations/features/
   - type: Developer Guide
     url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html
-  - type: API Reference
+  - type: APIReference
     url: https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html
   - type: Quotas
     url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html
@@ -65,7 +65,7 @@ common:
   url: https://status.aws.amazon.com/
 - type: Compliance
   url: https://aws.amazon.com/compliance/
-- type: Terms of Service
+- type: TermsOfService
   url: https://aws.amazon.com/service-terms/
 - type: Website
   url: https://aws.amazon.com/organizations/
@@ -73,17 +73,17 @@ common:
   url: https://docs.aws.amazon.com/organizations/
 - type: Pricing
   url: https://aws.amazon.com/organizations/pricing/
-- type: Getting Started
+- type: GettingStarted
   url: https://aws.amazon.com/organizations/getting-started/
 - type: FAQs
   url: https://aws.amazon.com/organizations/faqs/
-- type: Privacy Policy
+- type: PrivacyPolicy
   url: https://aws.amazon.com/privacy/
-- type: Sign Up
+- type: SignUp
   url: https://portal.aws.amazon.com/billing/signup
-- type: GitHub Organization
+- type: GitHubOrganization
   url: https://github.com/aws
-- type: Stack Overflow
+- type: StackOverflow
   url: https://stackoverflow.com/questions/tagged/aws-organizations
 - type: Code Examples
   url: https://docs.aws.amazon.com/code-library/latest/ug/organizations_code_examples.html
@@ -93,9 +93,9 @@ common:
   url: vocabulary/amazon-organizations-vocabulary.yaml
 - type: NaftikoCapability
   url: capabilities/amazon-organizations-workflow.yaml
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-organizations-context.jsonld
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-organizations-openapi-context.jsonld
 - type: JSONSchema
   url: json-schema/amazon-organizations-schema.json
