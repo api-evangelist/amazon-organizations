@@ -1,0 +1,87 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Organizations Bootstrap Organization By Feature Set
+  summary: Create an organization with a caller-chosen feature set and branch on the result.
+  description: >-
+    Bootstraps a new AWS organization where the caller supplies the desired
+    feature set as an input, and the workflow branches on the feature set
+    returned in the documented response. When the organization comes back with
+    the ALL feature set the flow ends ready for policy-based management; when
+    it comes back with CONSOLIDATED_BILLING it ends in billing-only mode. The
+    CreateOrganization request is spelled out inline, including the AWS JSON
+    protocol X-Amz-Target header and the application/x-amz-json-1.1 body, so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+
+
+    Adaptation note: the published Amazon Organizations OpenAPI description in
+    this provider directory defines only the CreateOrganization operation, so
+    no real downstream account, organizational unit, policy, root, or
+    handshake operations exist to chain to. The branching here therefore
+    routes only between documented terminal outcomes of the single supported
+    operation rather than into invented operations.
+  version: 1.0.0
+sourceDescriptions:
+- name: organizationsApi
+  url: ../openapi/amazon-organizations-openapi.yml
+  type: openapi
+workflows:
+- workflowId: bootstrap-organization-by-feature-set
+  summary: Create an organization with the requested feature set and branch on the response.
+  description: >-
+    Calls CreateOrganization with the caller-supplied FeatureSet, then inspects
+    the FeatureSet echoed back in the documented response to confirm whether
+    the organization is in full management mode or consolidated-billing mode.
+  inputs:
+    type: object
+    required:
+    - featureSet
+    properties:
+      featureSet:
+        type: string
+        description: The feature set to enable on the new organization.
+        enum:
+        - ALL
+        - CONSOLIDATED_BILLING
+      region:
+        type: string
+        description: AWS region for the organizations regional endpoint.
+        default: us-east-1
+  steps:
+  - stepId: createOrganization
+    description: >-
+      Create the organization with the calling account as the management
+      account using the caller-supplied feature set.
+    operationId: CreateOrganization
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSOrganizationsV20161128.CreateOrganization
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        FeatureSet: $inputs.featureSet
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      organizationId: $response.body#/Id
+      organizationArn: $response.body#/Arn
+      featureSet: $response.body#/FeatureSet
+      masterAccountId: $response.body#/MasterAccountId
+    onSuccess:
+    - name: fullManagement
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.FeatureSet == "ALL"
+        type: jsonpath
+    - name: billingOnly
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.FeatureSet == "CONSOLIDATED_BILLING"
+        type: jsonpath
+  outputs:
+    organizationId: $steps.createOrganization.outputs.organizationId
+    organizationArn: $steps.createOrganization.outputs.organizationArn
+    featureSet: $steps.createOrganization.outputs.featureSet

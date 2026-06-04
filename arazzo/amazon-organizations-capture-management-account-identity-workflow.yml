@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Organizations Capture Management Account Identity
+  summary: Create an organization and capture the management account identity from the response.
+  description: >-
+    Creates a new AWS organization and extracts the management (master)
+    account identity from the documented response, returning the management
+    account id, ARN, and email alongside the organization id and ARN. This is
+    the identity-capture pattern used to seed downstream tooling and audit
+    records with the canonical management account details produced at
+    organization creation time. The CreateOrganization request is spelled out
+    inline, including the AWS JSON protocol X-Amz-Target header and the
+    application/x-amz-json-1.1 body.
+
+
+    Adaptation note: the published Amazon Organizations OpenAPI description in
+    this provider directory defines only the CreateOrganization operation.
+    The account, organizational unit, policy, root, and handshake operations
+    that would normally consume this identity are not present in the
+    specification, so this workflow stops at capturing the documented
+    response fields rather than chaining into invented operations.
+  version: 1.0.0
+sourceDescriptions:
+- name: organizationsApi
+  url: ../openapi/amazon-organizations-openapi.yml
+  type: openapi
+workflows:
+- workflowId: capture-management-account-identity
+  summary: Create an organization and surface the management account identity.
+  description: >-
+    Calls CreateOrganization and reads the documented MasterAccountId,
+    MasterAccountArn, and MasterAccountEmail response fields so the management
+    account identity is available as workflow outputs.
+  inputs:
+    type: object
+    properties:
+      featureSet:
+        type: string
+        description: The feature set to enable on the new organization.
+        enum:
+        - ALL
+        - CONSOLIDATED_BILLING
+        default: ALL
+      region:
+        type: string
+        description: AWS region for the organizations regional endpoint.
+        default: us-east-1
+  steps:
+  - stepId: createOrganization
+    description: >-
+      Create the organization so AWS designates the calling account as the
+      management account and returns its identity in the response.
+    operationId: CreateOrganization
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSOrganizationsV20161128.CreateOrganization
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        FeatureSet: $inputs.featureSet
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      organizationId: $response.body#/Id
+      organizationArn: $response.body#/Arn
+      masterAccountId: $response.body#/MasterAccountId
+      masterAccountArn: $response.body#/MasterAccountArn
+      masterAccountEmail: $response.body#/MasterAccountEmail
+  outputs:
+    organizationId: $steps.createOrganization.outputs.organizationId
+    organizationArn: $steps.createOrganization.outputs.organizationArn
+    masterAccountId: $steps.createOrganization.outputs.masterAccountId
+    masterAccountArn: $steps.createOrganization.outputs.masterAccountArn
+    masterAccountEmail: $steps.createOrganization.outputs.masterAccountEmail

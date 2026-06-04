@@ -1,0 +1,76 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Organizations Create Organization With All Features
+  summary: Create a new AWS organization with the ALL feature set enabled.
+  description: >-
+    Creates an AWS organization with the calling account as the management
+    account and the full ALL feature set, which enables both consolidated
+    billing and the policy-based management controls (service control
+    policies, tag policies, backup policies, and AI services opt-out
+    policies). The single CreateOrganization call is spelled out inline,
+    including the AWS JSON protocol X-Amz-Target header and the
+    application/x-amz-json-1.1 request body, so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+
+
+    Adaptation note: the Amazon Organizations OpenAPI description published
+    in this provider directory defines only the CreateOrganization
+    operation. The requested account, organizational unit, policy, root, and
+    handshake/invitation operations are not present in the specification, so
+    the originally requested multi-operation chains (create account then poll
+    describe-create-account-status then move to an OU; create OU then create
+    policy then attach; invite account then accept handshake) cannot be built
+    from real operations without inventing operationIds, parameters, or body
+    fields. These workflows therefore exercise the one documented operation
+    across distinct, realistic scenarios using only documented fields.
+  version: 1.0.0
+sourceDescriptions:
+- name: organizationsApi
+  url: ../openapi/amazon-organizations-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-organization-all-features
+  summary: Create an AWS organization with the ALL feature set.
+  description: >-
+    Calls CreateOrganization with FeatureSet set to ALL so that the new
+    organization supports both consolidated billing and policy-based
+    management, then captures the organization identifiers from the
+    documented response for downstream use.
+  inputs:
+    type: object
+    properties:
+      region:
+        type: string
+        description: >-
+          AWS region for the organizations regional endpoint (e.g.
+          us-east-1).
+        default: us-east-1
+  steps:
+  - stepId: createOrganization
+    description: >-
+      Create the organization with the calling account as the management
+      account, requesting the ALL feature set so policy controls are
+      available across the organization.
+    operationId: CreateOrganization
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSOrganizationsV20161128.CreateOrganization
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        FeatureSet: ALL
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      organizationId: $response.body#/Id
+      organizationArn: $response.body#/Arn
+      featureSet: $response.body#/FeatureSet
+      masterAccountId: $response.body#/MasterAccountId
+      masterAccountArn: $response.body#/MasterAccountArn
+      masterAccountEmail: $response.body#/MasterAccountEmail
+  outputs:
+    organizationId: $steps.createOrganization.outputs.organizationId
+    organizationArn: $steps.createOrganization.outputs.organizationArn
+    featureSet: $steps.createOrganization.outputs.featureSet
+    masterAccountId: $steps.createOrganization.outputs.masterAccountId

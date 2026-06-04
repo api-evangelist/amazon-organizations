@@ -1,0 +1,67 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Organizations Create Consolidated Billing Organization
+  summary: Create an AWS organization limited to the consolidated billing feature set.
+  description: >-
+    Creates an AWS organization using the CONSOLIDATED_BILLING feature set,
+    which groups member account billing under the management account without
+    enabling the policy-based management controls. This is the lighter-weight
+    organization shape used when the only goal is a single consolidated bill.
+    The CreateOrganization request is spelled out inline, including the AWS
+    JSON protocol X-Amz-Target header and the application/x-amz-json-1.1
+    request body, so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+
+
+    Adaptation note: the published Amazon Organizations OpenAPI description in
+    this provider directory defines only the CreateOrganization operation.
+    Account, organizational unit, policy, root, and handshake operations are
+    absent, so chained multi-operation flows cannot be built from real
+    operations. This workflow exercises the one documented operation with the
+    documented CONSOLIDATED_BILLING value of the FeatureSet enum.
+  version: 1.0.0
+sourceDescriptions:
+- name: organizationsApi
+  url: ../openapi/amazon-organizations-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-consolidated-billing-organization
+  summary: Create an AWS organization with only consolidated billing enabled.
+  description: >-
+    Calls CreateOrganization with FeatureSet set to CONSOLIDATED_BILLING and
+    captures the resulting organization and management account identifiers
+    from the documented response.
+  inputs:
+    type: object
+    properties:
+      region:
+        type: string
+        description: AWS region for the organizations regional endpoint.
+        default: us-east-1
+  steps:
+  - stepId: createOrganization
+    description: >-
+      Create the organization with the calling account as the management
+      account, requesting only the CONSOLIDATED_BILLING feature set.
+    operationId: CreateOrganization
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSOrganizationsV20161128.CreateOrganization
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        FeatureSet: CONSOLIDATED_BILLING
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      organizationId: $response.body#/Id
+      organizationArn: $response.body#/Arn
+      featureSet: $response.body#/FeatureSet
+      masterAccountId: $response.body#/MasterAccountId
+      masterAccountEmail: $response.body#/MasterAccountEmail
+  outputs:
+    organizationId: $steps.createOrganization.outputs.organizationId
+    featureSet: $steps.createOrganization.outputs.featureSet
+    masterAccountId: $steps.createOrganization.outputs.masterAccountId
+    masterAccountEmail: $steps.createOrganization.outputs.masterAccountEmail

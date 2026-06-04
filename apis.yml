@@ -55,6 +55,27 @@ apis:
   - type: NaftikoCapability
     url: capabilities/amazon-organizations-organizations.yaml
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/amazon-organizations-bootstrap-organization-by-feature-set-workflow.yml
+    name: Amazon Organizations Bootstrap Organization By Feature Set
+    summary: Create an organization with a caller-chosen feature set and branch on the result.
+  - url: arazzo/amazon-organizations-capture-management-account-identity-workflow.yml
+    name: Amazon Organizations Capture Management Account Identity
+    summary: Create an organization and capture the management account identity from the response.
+  - url: arazzo/amazon-organizations-create-organization-all-features-workflow.yml
+    name: Amazon Organizations Create Organization With All Features
+    summary: Create a new AWS organization with the ALL feature set enabled.
+  - url: arazzo/amazon-organizations-create-organization-consolidated-billing-workflow.yml
+    name: Amazon Organizations Create Consolidated Billing Organization
+    summary: Create an AWS organization limited to the consolidated billing feature set.
+  - url: arazzo/amazon-organizations-record-organization-arns-workflow.yml
+    name: Amazon Organizations Record Organization ARNs
+    summary: Create an organization and surface its organization and management account ARNs.
+  - url: arazzo/amazon-organizations-verify-organization-feature-set-workflow.yml
+    name: Amazon Organizations Verify Organization Feature Set
+    summary: Create an organization and assert that it came back with the requested feature set.
 - type: Blog
   url: https://aws.amazon.com/blogs/security/tag/aws-organizations/
 - type: Support

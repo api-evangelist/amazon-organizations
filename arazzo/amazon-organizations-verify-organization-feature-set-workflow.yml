@@ -1,0 +1,75 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Organizations Verify Organization Feature Set
+  summary: Create an organization and assert that it came back with the requested feature set.
+  description: >-
+    Creates a new AWS organization and verifies that the feature set echoed
+    back in the documented response exactly matches the feature set the caller
+    asked for. The success criteria assert both the documented 200 status code
+    and that the response FeatureSet equals the requested value, so the
+    workflow only succeeds when AWS provisioned the organization in the
+    intended mode. The CreateOrganization request is spelled out inline,
+    including the AWS JSON protocol X-Amz-Target header and the
+    application/x-amz-json-1.1 body.
+
+
+    Adaptation note: the published Amazon Organizations OpenAPI description in
+    this provider directory defines only the CreateOrganization operation, so
+    verification is performed against the documented response of that single
+    operation rather than by reading back state through a describe operation,
+    which the specification does not provide.
+  version: 1.0.0
+sourceDescriptions:
+- name: organizationsApi
+  url: ../openapi/amazon-organizations-openapi.yml
+  type: openapi
+workflows:
+- workflowId: verify-organization-feature-set
+  summary: Create an organization and assert the returned feature set matches the request.
+  description: >-
+    Calls CreateOrganization with the requested feature set and uses a
+    success criterion on the documented FeatureSet response field to confirm
+    the organization was created in the intended mode.
+  inputs:
+    type: object
+    required:
+    - featureSet
+    properties:
+      featureSet:
+        type: string
+        description: The feature set the organization is expected to be created with.
+        enum:
+        - ALL
+        - CONSOLIDATED_BILLING
+      region:
+        type: string
+        description: AWS region for the organizations regional endpoint.
+        default: us-east-1
+  steps:
+  - stepId: createOrganization
+    description: >-
+      Create the organization and assert in the success criteria that the
+      returned status is 200 and the returned FeatureSet matches the
+      requested feature set.
+    operationId: CreateOrganization
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSOrganizationsV20161128.CreateOrganization
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        FeatureSet: $inputs.featureSet
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.FeatureSet == $inputs.featureSet
+      type: jsonpath
+    outputs:
+      organizationId: $response.body#/Id
+      organizationArn: $response.body#/Arn
+      featureSet: $response.body#/FeatureSet
+  outputs:
+    organizationId: $steps.createOrganization.outputs.organizationId
+    organizationArn: $steps.createOrganization.outputs.organizationArn
+    featureSet: $steps.createOrganization.outputs.featureSet

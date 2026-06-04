@@ -1,0 +1,73 @@
+arazzo: 1.0.1
+info:
+  title: Amazon Organizations Record Organization ARNs
+  summary: Create an organization and surface its organization and management account ARNs.
+  description: >-
+    Creates a new AWS organization and surfaces the two canonical Amazon
+    Resource Names produced at creation time: the organization ARN and the
+    management account ARN. These ARNs are the stable identifiers that
+    downstream infrastructure-as-code, tagging, and access policies reference,
+    so capturing them at creation time is a common first step in an
+    organization onboarding pipeline. The CreateOrganization request is
+    spelled out inline, including the AWS JSON protocol X-Amz-Target header
+    and the application/x-amz-json-1.1 body.
+
+
+    Adaptation note: the published Amazon Organizations OpenAPI description in
+    this provider directory defines only the CreateOrganization operation.
+    Because no account, organizational unit, policy, root, or handshake
+    operations exist in the specification to consume these ARNs, the workflow
+    ends after capturing the documented response fields rather than chaining
+    into invented operations.
+  version: 1.0.0
+sourceDescriptions:
+- name: organizationsApi
+  url: ../openapi/amazon-organizations-openapi.yml
+  type: openapi
+workflows:
+- workflowId: record-organization-arns
+  summary: Create an organization and capture its organization and management account ARNs.
+  description: >-
+    Calls CreateOrganization and reads the documented Arn and
+    MasterAccountArn response fields so both canonical ARNs are exposed as
+    workflow outputs for downstream provisioning.
+  inputs:
+    type: object
+    properties:
+      featureSet:
+        type: string
+        description: The feature set to enable on the new organization.
+        enum:
+        - ALL
+        - CONSOLIDATED_BILLING
+        default: ALL
+      region:
+        type: string
+        description: AWS region for the organizations regional endpoint.
+        default: us-east-1
+  steps:
+  - stepId: createOrganization
+    description: >-
+      Create the organization and read back the organization ARN and the
+      management account ARN from the documented response.
+    operationId: CreateOrganization
+    parameters:
+    - name: X-Amz-Target
+      in: header
+      value: AWSOrganizationsV20161128.CreateOrganization
+    requestBody:
+      contentType: application/x-amz-json-1.1
+      payload:
+        FeatureSet: $inputs.featureSet
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      organizationId: $response.body#/Id
+      organizationArn: $response.body#/Arn
+      masterAccountArn: $response.body#/MasterAccountArn
+      masterAccountId: $response.body#/MasterAccountId
+  outputs:
+    organizationId: $steps.createOrganization.outputs.organizationId
+    organizationArn: $steps.createOrganization.outputs.organizationArn
+    masterAccountArn: $steps.createOrganization.outputs.masterAccountArn
+    masterAccountId: $steps.createOrganization.outputs.masterAccountId
