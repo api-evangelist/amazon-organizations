@@ -55,6 +55,14 @@ apis:
       - type: RateLimits
         url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html
 common:
+  - type: TrustCenter
+    url: security/amazon-organizations-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-organizations-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-organizations-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-organizations-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-organizations/overview
   - type: Arazzo
