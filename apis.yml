@@ -55,6 +55,8 @@ apis:
       - type: RateLimits
         url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-organizations-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-organizations-trust-center.yml
   - type: VulnerabilityDisclosure
