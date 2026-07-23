@@ -1,11 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Amazon Organizations AWS Organizations API
-  description: >-
-    The AWS Organizations API enables programmatic management of your
-    organization. You can create accounts, organize them into
-    organizational units, apply policies, and manage member accounts
-    through this interface.
+  title: Amazon AWS Organizations API
+  description: The AWS Organizations API enables programmatic management of your organization. You can create accounts, organize them into organizational units, apply policies, and manage member accounts through this interface.
   version: '2016-11-28'
   contact:
     name: AWS Support
@@ -78,12 +74,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  securitySchemes:
-    sigv4:
-      type: apiKey
-      name: Authorization
-      in: header
-      description: AWS Signature Version 4
   schemas:
     Organization:
       type: object
@@ -103,58 +93,9 @@ components:
           type: string
         MasterAccountEmail:
           type: string
-    Account:
-      type: object
-      properties:
-        Id:
-          type: string
-        Arn:
-          type: string
-        Email:
-          type: string
-        Name:
-          type: string
-        Status:
-          type: string
-          enum:
-          - ACTIVE
-          - SUSPENDED
-          - PENDING_CLOSURE
-        JoinedMethod:
-          type: string
-          enum:
-          - INVITED
-          - CREATED
-        JoinedTimestamp:
-          type: string
-          format: date-time
-    OrganizationalUnit:
-      type: object
-      properties:
-        Id:
-          type: string
-        Arn:
-          type: string
-        Name:
-          type: string
-    Policy:
-      type: object
-      properties:
-        PolicySummary:
-          type: object
-          properties:
-            Id:
-              type: string
-            Arn:
-              type: string
-            Name:
-              type: string
-            Type:
-              type: string
-              enum:
-              - SERVICE_CONTROL_POLICY
-              - TAG_POLICY
-              - BACKUP_POLICY
-              - AISERVICES_OPT_OUT_POLICY
-        Content:
-          type: string
+  securitySchemes:
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4
