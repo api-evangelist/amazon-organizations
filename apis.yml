@@ -4,6 +4,19 @@ description: >-
   organization that you create and centrally manage.
 url: https://aws.amazon.com/organizations/
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 tags:
   - Account Management
@@ -16,44 +29,36 @@ tags:
 created: '2024-01-15'
 modified: '2026-05-19'
 apis:
-  - name: AWS Organizations API
-    description: >-
-      The AWS Organizations API enables you to programmatically create and manage AWS accounts, create organizational
-      units, apply policies, and invite accounts to join your organization.
-    image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
-    humanURL: https://aws.amazon.com/organizations/
-    baseURL: https://organizations.amazonaws.com
-    tags:
-      - Account Management
-      - Governance
-      - Organizations
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html
-      - type: OpenAPI
-        url: https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html
-      - type: OpenAPI
-        url: openapi/amazon-organizations-openapi.yml
-      - type: OpenAPI
-        url: openapi/amazon-organizations-openapi.yml
-      - type: JSONSchema
-        url: json-schema/amazon-organizations-schema.json
-      - type: JSONLD
-        url: json-ld/amazon-organizations-context.jsonld
-      - type: Pricing
-        url: https://aws.amazon.com/organizations/pricing/
-      - type: GettingStarted
-        url: https://aws.amazon.com/organizations/getting-started/
-      - type: FAQ
-        url: https://aws.amazon.com/organizations/faqs/
-      - type: Features
-        url: https://aws.amazon.com/organizations/features/
-      - type: Developer Guide
-        url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html
-      - type: APIReference
-        url: https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html
-      - type: RateLimits
-        url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html
+- aid: amazon-organizations:amazon-organizations-organizations-api
+  name: Amazon Organizations Organizations API
+  description: Operations for creating and managing organizations
+  humanURL: https://aws.amazon.com/organizations/
+  baseURL: https://organizations.amazonaws.com
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-organizations-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html
+  - type: JSONSchema
+    url: json-schema/amazon-organizations-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-organizations-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/organizations/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/organizations/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/organizations/faqs/
+  - type: Features
+    url: https://aws.amazon.com/organizations/features/
+  - type: Developer Guide
+    url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html
+  - type: RateLimits
+    url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html
 common:
   - type: AgenticAccess
     url: agentic-access/amazon-organizations-agentic-access.yml
