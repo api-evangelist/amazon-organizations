@@ -1,0 +1,14 @@
+{
+  "provider": "amazon-organizations",
+  "sources": [
+    "amazon-organizations-organizations-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-organizations-organizations-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
