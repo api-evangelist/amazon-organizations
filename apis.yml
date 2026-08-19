@@ -4,6 +4,7 @@ description: >-
   organization that you create and centrally manage.
 url: https://aws.amazon.com/organizations/
 type: Index
+specificationVersion: '0.23'
 accessModel:
   pricing: freemium
   onboarding: self-serve
