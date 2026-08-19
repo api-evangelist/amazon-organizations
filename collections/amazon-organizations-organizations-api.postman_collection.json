@@ -1,0 +1,161 @@
+{
+  "item": [
+    {
+      "id": "64082d85-609b-4605-9ba8-45e47fcd22eb",
+      "name": "Organizations",
+      "description": {
+        "content": "Operations for creating and managing organizations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7b59c50b-a25b-4299-9071-3dee06e4d026",
+          "name": "Amazon Organizations Create an Organization",
+          "request": {
+            "name": "Amazon Organizations Create an Organization",
+            "description": {
+              "content": "Creates an AWS organization with the calling account as the management account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-central-1,ap-northeast-1,ap-southeast-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-amz-json-1.1"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"FeatureSet\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "ce257fb2-bda6-4778-812a-95cbdfbc0a89",
+              "name": "Organization created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-central-1,ap-northeast-1,ap-southeast-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FeatureSet\": \"<string>\"\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Id\": \"resource-abc123\",\n  \"Arn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"FeatureSet\": \"ALL\",\n  \"MasterAccountArn\": \"arn:aws:service:us-east-1:123456789012:resource/example\",\n  \"MasterAccountId\": \"resource-abc123\",\n  \"MasterAccountEmail\": \"example-string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-central-1,ap-northeast-1,ap-southeast-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://organizations.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d01fa916-dc8c-4040-9c37-ac12fa78e0ae",
+    "name": "Amazon AWS Organizations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AWS Organizations API enables programmatic management of your organization. You can create accounts, organize them into organizational units, apply policies, and manage member accounts through this interface.\n\nContact Support:\n Name: AWS Support",
+      "type": "text/plain"
+    }
+  }
+}
