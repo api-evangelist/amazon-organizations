@@ -25,6 +25,14 @@ tags:
   - Consolidated Billing
   - Governance
   - Multi-Account
+  - Organization
+  - Policies
+tags_raw:
+  - Account Management
+  - AWS
+  - Consolidated Billing
+  - Governance
+  - Multi-Account
   - Organizations
   - Policies
 created: '2024-01-15'
@@ -36,6 +44,8 @@ apis:
   humanURL: https://aws.amazon.com/organizations/
   baseURL: https://organizations.amazonaws.com
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
