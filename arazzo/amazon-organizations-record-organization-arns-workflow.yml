@@ -22,7 +22,7 @@ info:
   version: 1.0.0
 sourceDescriptions:
 - name: organizationsApi
-  url: ../openapi/amazon-organizations-openapi.yml
+  url: ../openapi/amazon-organizations-organizations-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: record-organization-arns
