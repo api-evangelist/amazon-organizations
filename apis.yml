@@ -83,6 +83,12 @@ apis:
   - type: RateLimits
     url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html
 common:
+- type: Plans
+  url: plans/amazon-organizations-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/amazon-organizations-rate-limits.yml
+- type: FinOps
+  url: finops/amazon-organizations-finops.yml
 - type: AgenticAccess
   url: agentic-access/amazon-organizations-agentic-access.yml
 - type: TrustCenter
