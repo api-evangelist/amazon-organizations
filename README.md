@@ -1,4 +1,4 @@
-# Amazon Organizations (amazon-organizations)
+# Amazon Organizations
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,94 +66,196 @@
 
 AWS Organizations is an account management service that enables you to consolidate multiple AWS accounts into an organization that you create and centrally manage.
 
-**APIs.json:** [https://aws.amazon.com/organizations/](https://aws.amazon.com/organizations/)
+**Areas:** Account Management · AWS · Consolidated Billing · Governance · Multi-Account · Organization · Policies
 
-## Scope
+## Amazon Organizations on APIs.io
 
-- **Type:** Index
+Everything profiled for Amazon Organizations is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-organizations/](https://apis.io/providers/amazon-organizations/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (9)
 
-- Account Management
-- AWS
-- Consolidated Billing
-- Governance
-- Multi-Account
-- Organizations
-- Policies
+- [Amazon Organizations API](https://apis.io/apis/amazon-organizations/amazon-organizations-organizations-api/) — Operations for creating and managing organizations
+- [Amazon Organizations Organizations Account API](https://apis.io/apis/amazon-organizations/amazon-organizations-account-api/) — The Organizations Account API from Amazon Organizations — 6 operation(s) for organizations account.
+- [Amazon Organizations Organizations Aws Service Access API](https://apis.io/apis/amazon-organizations/amazon-organizations-aws-service-access-api/) — The Organizations Aws Service Access API from Amazon Organizations — 3 operation(s) for organizations aws service access.
+- [Amazon Organizations Organizations Delegated Administrator API](https://apis.io/apis/amazon-organizations/amazon-organizations-delegated-administrator-api/) — The Organizations Delegated Administrator API from Amazon Organizations — 3 operation(s) for organizations delegated administrator.
+- [Amazon Organizations Organizations Handshake API](https://apis.io/apis/amazon-organizations/amazon-organizations-handshake-api/) — The Organizations Handshake API from Amazon Organizations — 5 operation(s) for organizations handshake.
+- [Amazon Organizations Organizations Operations API](https://apis.io/apis/amazon-organizations/amazon-organizations-operations-api/) — The Organizations Operations API from Amazon Organizations — 27 operation(s) for organizations operations.
+- [Amazon Organizations Organizations Organizational Unit API](https://apis.io/apis/amazon-organizations/amazon-organizations-organizational-unit-api/) — The Organizations Organizational Unit API from Amazon Organizations — 5 operation(s) for organizations organizational unit.
+- [Amazon Organizations Organizations Policy API](https://apis.io/apis/amazon-organizations/amazon-organizations-policy-api/) — The Organizations Policy API from Amazon Organizations — 8 operation(s) for organizations policy.
+- [Amazon Organizations Organizations Resource Policy API](https://apis.io/apis/amazon-organizations/amazon-organizations-resource-policy-api/) — The Organizations Resource Policy API from Amazon Organizations — 3 operation(s) for organizations resource policy.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Arazzo workflows (6)
 
-### AWS Organizations API
+Multi-step workflows that chain operations into a business task.
 
-The AWS Organizations API enables you to programmatically create and manage AWS accounts, create organizational units, apply policies, and invite accounts to join your organization.
+- [Amazon Organizations Bootstrap Organization By Feature Set](https://apis.io/arazzos/amazon-organizations/amazon-organizations-bootstrap-organization-by-feature-set-workflow/)
+- [Amazon Organizations Capture Management Account Identity](https://apis.io/arazzos/amazon-organizations/amazon-organizations-capture-management-account-identity-workflow/)
+- [Amazon Organizations Create Organization With All Features](https://apis.io/arazzos/amazon-organizations/amazon-organizations-create-organization-all-features-workflow/)
+- [Amazon Organizations Create Consolidated Billing Organization](https://apis.io/arazzos/amazon-organizations/amazon-organizations-create-organization-consolidated-billing-workflow/)
+- [Amazon Organizations Record Organization ARNs](https://apis.io/arazzos/amazon-organizations/amazon-organizations-record-organization-arns-workflow/)
+- [Amazon Organizations Verify Organization Feature Set](https://apis.io/arazzos/amazon-organizations/amazon-organizations-verify-organization-feature-set-workflow/)
 
-- **Human URL:** [https://aws.amazon.com/organizations/](https://aws.amazon.com/organizations/)
-- **Base URL:** `https://organizations.amazonaws.com`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Account Management
-- Governance
-- Organizations
+- [Amazon Organizations Agentic Access](https://apis.io/agentic-access/amazon-organizations/amazon-organizations-agentic-access/)
 
-#### Properties
+#### JSON Schema (5)
 
-- [Documentation](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
-- [OpenAPI](https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/amazon-organizations-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/amazon-organizations.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-organizations.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [OpenAPI](openapi/amazon-organizations-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [J S O N  Schema](json-schema/amazon-organizations-schema.json)
-- [JSON-LD](json-ld/amazon-organizations-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Pricing](https://aws.amazon.com/organizations/pricing/)
-- [Getting Started](https://aws.amazon.com/organizations/getting-started/)
-- [F A Q](https://aws.amazon.com/organizations/faqs/)
-- [Features](https://aws.amazon.com/organizations/features/)
-- [Developer  Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
-- [API Reference](https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html)
-- [Quotas](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)
+The data models the API reads and writes.
 
-## Common Properties
+- [AWS Organizations Definition](https://apis.io/schemas/amazon-organizations/amazon-organizations/)
+- [Account](https://apis.io/schemas/amazon-organizations/openapi-account/)
+- [Organization](https://apis.io/schemas/amazon-organizations/openapi-organization/)
+- [OrganizationalUnit](https://apis.io/schemas/amazon-organizations/openapi-organizational-unit/)
+- [Policy](https://apis.io/schemas/amazon-organizations/openapi-policy/)
 
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Blog](https://aws.amazon.com/blogs/security/tag/aws-organizations/)
-- [Support](https://aws.amazon.com/premiumsupport/)
-- [Console](https://console.aws.amazon.com/organizations/)
-- [C L I  Reference](https://docs.aws.amazon.com/cli/latest/reference/organizations/)
-- [SDK](https://aws.amazon.com/tools/)
-- [Service  Status](https://status.aws.amazon.com/)
-- [Compliance](https://aws.amazon.com/compliance/)
-- [Terms of Service](https://aws.amazon.com/service-terms/)
+#### JSON Structure (5)
+
+Data models expressed in JSON Structure.
+
+- [Amazon Organizations Structure](https://apis.io/json-structure/amazon-organizations/amazon-organizations-structure/)
+- [Openapi Account Structure](https://apis.io/json-structure/amazon-organizations/openapi-account-structure/)
+- [Openapi Organization Structure](https://apis.io/json-structure/amazon-organizations/openapi-organization-structure/)
+- [Openapi Organizational Unit Structure](https://apis.io/json-structure/amazon-organizations/openapi-organizational-unit-structure/)
+- [Openapi Policy Structure](https://apis.io/json-structure/amazon-organizations/openapi-policy-structure/)
+
+#### JSON-LD (2)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Organizations Context](https://apis.io/jsonld/amazon-organizations/amazon-organizations-context/)
+- [Amazon Organizations Openapi Context](https://apis.io/jsonld/amazon-organizations/amazon-organizations-openapi-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon Organizations Vocabulary](https://apis.io/vocabularies/amazon-organizations/amazon-organizations-vocabulary/)
+
+#### Examples (5)
+
+Example requests and responses.
+
+- [Amazon Organizations Example](https://apis.io/examples/amazon-organizations/amazon-organizations-example/)
+- [Openapi Account Example](https://apis.io/examples/amazon-organizations/openapi-account-example/)
+- [Openapi Organization Example](https://apis.io/examples/amazon-organizations/openapi-organization-example/)
+- [Openapi Organizational Unit Example](https://apis.io/examples/amazon-organizations/openapi-organizational-unit-example/)
+- [Openapi Policy Example](https://apis.io/examples/amazon-organizations/openapi-policy-example/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Amazon Organizations AWS Organizations API](https://apis.io/collections/amazon-organizations/open-amazon-organizations/)
+- [Amazon AWS Organizations API](https://apis.io/collections/amazon-organizations/open-amazon-organizations-organizations-api/)
+- [Amazon Organizations AWS Organizations API](https://apis.io/collections/amazon-organizations/postman-amazon-organizations/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon Organizations — jsonschema rules](https://apis.io/rules/amazon-organizations/amazon-organizations-jsonschema-spectral-rules/)
+- [Amazon Organizations API Rules](https://apis.io/rules/amazon-organizations/amazon-organizations-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Organizations Authentication](https://apis.io/security/amazon-organizations/amazon-organizations-authentication/)
+- [Amazon Organizations Domain Security](https://apis.io/security/amazon-organizations/amazon-organizations-domain-security/)
+- [Amazon Organizations Trust Center](https://apis.io/security/amazon-organizations/amazon-organizations-trust-center/)
+- [Amazon Organizations Vulnerability Disclosure](https://apis.io/security/amazon-organizations/amazon-organizations-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Organizations Plans Pricing](https://apis.io/plans/amazon-organizations/amazon-organizations-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Organizations Rate Limits](https://apis.io/rate-limits/amazon-organizations/amazon-organizations-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Amazon Organizations Finops](https://apis.io/finops/amazon-organizations/amazon-organizations-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://aws.amazon.com/organizations/)
 - [Documentation](https://docs.aws.amazon.com/organizations/)
+- [Getting started](https://aws.amazon.com/organizations/getting-started/)
 - [Pricing](https://aws.amazon.com/organizations/pricing/)
-- [Getting Started](https://aws.amazon.com/organizations/getting-started/)
-- [F A Qs](https://aws.amazon.com/organizations/faqs/)
-- [Privacy Policy](https://aws.amazon.com/privacy/)
-- [Sign Up](https://portal.aws.amazon.com/billing/signup)
-- [GitHub Organization](https://github.com/aws)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/aws-organizations)
-- [Code  Examples](https://docs.aws.amazon.com/code-library/latest/ug/organizations_code_examples.html)
-- [Spectral Rules](rules/amazon-organizations-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-organizations-vocabulary.yaml)
-- [JSON-LD](json-ld/amazon-organizations-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON-LD](json-ld/amazon-organizations-openapi-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/amazon-organizations-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/openapi-account-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/openapi-organization-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/openapi-organizational-unit-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/openapi-policy-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Integrations](https://aws.amazon.com/partners/)
+- [Support](https://aws.amazon.com/premiumsupport/)
+- [Blog](https://aws.amazon.com/blogs/security/tag/aws-organizations/)
+- [Compliance](https://aws.amazon.com/compliance/)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 54.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 60.5 |
+| Contract governance | 27.3 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 63.1 |
+| Access clarity | 57.9 |
+
+**Agent readiness 24.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-organizations/](https://apis.io/providers/amazon-organizations/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon Organizations: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-organizations/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
