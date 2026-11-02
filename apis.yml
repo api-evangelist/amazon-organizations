@@ -1,0 +1,293 @@
+name: Amazon Organizations
+description: AWS Organizations is an account management service that enables you to consolidate multiple
+  AWS accounts into an organization that you create and centrally manage.
+url: https://aws.amazon.com/organizations/
+type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
+specificationVersion: '0.23'
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: medium
+  source:
+  - plans
+  - authentication
+  - security
+  generated: '2026-09-03'
+  method: derived
+image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+tags:
+- Account Management
+- Amazon Web Services
+- Consolidated Billing
+- Governance
+- Multi-Account
+- Organization
+- Policies
+tags_raw:
+- Account Management
+- AWS
+- Consolidated Billing
+- Governance
+- Multi-Account
+- Organizations
+- Policies
+created: '2024-01-15'
+modified: '2026-09-16'
+apis:
+- aid: amazon-organizations:amazon-organizations-organizations-api
+  name: Amazon Organizations API
+  description: Operations for creating and managing organizations
+  humanURL: https://aws.amazon.com/organizations/
+  baseURL: https://organizations.amazonaws.com
+  tags:
+  - Organization
+  tags_raw:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-organizations-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html
+  - type: JSONSchema
+    url: json-schema/amazon-organizations-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-organizations-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/organizations/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/organizations/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/organizations/faqs/
+  - type: Features
+    url: https://aws.amazon.com/organizations/features/
+  - type: Developer Guide
+    url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html
+  - type: APIReference
+    url: https://docs.aws.amazon.com/organizations/latest/APIReference/Welcome.html
+  - type: RateLimits
+    url: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html
+- aid: amazon-organizations:amazon-organizations-account-api
+  name: Amazon Organizations Organizations Account API
+  description: >-
+    The Organizations Account API from Amazon Organizations — 6 operation(s) for organizations account.
+  humanURL: https://aws.amazon.com/organizations/
+  baseURL: https://organizations.amazonaws.com
+  tags:
+  - Organizations Account
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-organizations-account-api-openapi.yml
+- aid: amazon-organizations:amazon-organizations-aws-service-access-api
+  name: Amazon Organizations Organizations Aws Service Access API
+  description: >-
+    The Organizations Aws Service Access API from Amazon Organizations — 3 operation(s) for organizations
+    aws service access.
+  humanURL: https://aws.amazon.com/organizations/
+  baseURL: https://organizations.amazonaws.com
+  tags:
+  - Organizations Aws Service Access
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-organizations-aws-service-access-api-openapi.yml
+- aid: amazon-organizations:amazon-organizations-delegated-administrator-api
+  name: Amazon Organizations Organizations Delegated Administrator API
+  description: >-
+    The Organizations Delegated Administrator API from Amazon Organizations — 3 operation(s) for organizations
+    delegated administrator.
+  humanURL: https://aws.amazon.com/organizations/
+  baseURL: https://organizations.amazonaws.com
+  tags:
+  - Organizations Delegated Administrator
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-organizations-delegated-administrator-api-openapi.yml
+- aid: amazon-organizations:amazon-organizations-handshake-api
+  name: Amazon Organizations Organizations Handshake API
+  description: >-
+    The Organizations Handshake API from Amazon Organizations — 5 operation(s) for organizations handshake.
+  humanURL: https://aws.amazon.com/organizations/
+  baseURL: https://organizations.amazonaws.com
+  tags:
+  - Organizations Handshake
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-organizations-handshake-api-openapi.yml
+- aid: amazon-organizations:amazon-organizations-operations-api
+  name: Amazon Organizations Organizations Operations API
+  description: >-
+    The Organizations Operations API from Amazon Organizations — 27 operation(s) for organizations operations.
+  humanURL: https://aws.amazon.com/organizations/
+  baseURL: https://organizations.amazonaws.com
+  tags:
+  - Organizations Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-organizations-operations-api-openapi.yml
+- aid: amazon-organizations:amazon-organizations-organizational-unit-api
+  name: Amazon Organizations Organizations Organizational Unit API
+  description: >-
+    The Organizations Organizational Unit API from Amazon Organizations — 5 operation(s) for organizations
+    organizational unit.
+  humanURL: https://aws.amazon.com/organizations/
+  baseURL: https://organizations.amazonaws.com
+  tags:
+  - Organizations Organizational Unit
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-organizations-organizational-unit-api-openapi.yml
+- aid: amazon-organizations:amazon-organizations-policy-api
+  name: Amazon Organizations Organizations Policy API
+  description: >-
+    The Organizations Policy API from Amazon Organizations — 8 operation(s) for organizations policy.
+  humanURL: https://aws.amazon.com/organizations/
+  baseURL: https://organizations.amazonaws.com
+  tags:
+  - Organizations Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-organizations-policy-api-openapi.yml
+- aid: amazon-organizations:amazon-organizations-resource-policy-api
+  name: Amazon Organizations Organizations Resource Policy API
+  description: >-
+    The Organizations Resource Policy API from Amazon Organizations — 3 operation(s) for organizations
+    resource policy.
+  humanURL: https://aws.amazon.com/organizations/
+  baseURL: https://organizations.amazonaws.com
+  tags:
+  - Organizations Resource Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-organizations-resource-policy-api-openapi.yml
+common:
+- type: CapabilityMap
+  url: capabilities/amazon-organizations-capability-edges.yml
+  name: Amazon Organizations Business Capability Map
+- type: Plans
+  url: plans/amazon-organizations-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/amazon-organizations-rate-limits.yml
+- type: FinOps
+  url: finops/amazon-organizations-finops.yml
+- type: AgenticAccess
+  url: agentic-access/amazon-organizations-agentic-access.yml
+- type: TrustCenter
+  url: security/amazon-organizations-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-organizations-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-organizations-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-organizations-authentication.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/amazon-organizations/overview
+- type: Arazzo
+  url: arazzo/amazon-organizations-bootstrap-organization-by-feature-set-workflow.yml
+  name: Amazon Organizations Bootstrap Organization By Feature Set
+- type: Arazzo
+  url: arazzo/amazon-organizations-capture-management-account-identity-workflow.yml
+  name: Amazon Organizations Capture Management Account Identity
+- type: Arazzo
+  url: arazzo/amazon-organizations-create-organization-all-features-workflow.yml
+  name: Amazon Organizations Create Organization With All Features
+- type: Arazzo
+  url: arazzo/amazon-organizations-create-organization-consolidated-billing-workflow.yml
+  name: Amazon Organizations Create Consolidated Billing Organization
+- type: Arazzo
+  url: arazzo/amazon-organizations-record-organization-arns-workflow.yml
+  name: Amazon Organizations Record Organization ARNs
+- type: Arazzo
+  url: arazzo/amazon-organizations-verify-organization-feature-set-workflow.yml
+  name: Amazon Organizations Verify Organization Feature Set
+- type: Blog
+  url: https://aws.amazon.com/blogs/security/tag/aws-organizations/
+- type: Support
+  url: https://aws.amazon.com/premiumsupport/
+- type: Console
+  url: https://console.aws.amazon.com/organizations/
+- type: CLI Reference
+  url: https://docs.aws.amazon.com/cli/latest/reference/organizations/
+- type: SDKs
+  url: https://aws.amazon.com/tools/
+- type: Service Status
+  url: https://status.aws.amazon.com/
+- type: Compliance
+  url: https://aws.amazon.com/compliance/
+- type: TermsOfService
+  url: https://aws.amazon.com/service-terms/
+- type: Website
+  url: https://aws.amazon.com/organizations/
+- type: Documentation
+  url: https://docs.aws.amazon.com/organizations/
+- type: Pricing
+  url: https://aws.amazon.com/organizations/pricing/
+- type: GettingStarted
+  url: https://aws.amazon.com/organizations/getting-started/
+- type: FAQ
+  url: https://aws.amazon.com/organizations/faqs/
+- type: PrivacyPolicy
+  url: https://aws.amazon.com/privacy/
+- type: Signup
+  url: https://portal.aws.amazon.com/billing/signup
+- type: GitHubOrganization
+  url: https://github.com/aws
+- type: StackOverflow
+  url: https://stackoverflow.com/questions/tagged/aws-organizations
+- type: Code Examples
+  url: https://docs.aws.amazon.com/code-library/latest/ug/organizations_code_examples.html
+- type: SpectralRules
+  url: rules/amazon-organizations-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/amazon-organizations-vocabulary.yaml
+- type: JSONLD
+  url: json-ld/amazon-organizations-context.jsonld
+- type: JSONLD
+  url: json-ld/amazon-organizations-openapi-context.jsonld
+- type: JSONSchema
+  url: json-schema/amazon-organizations-schema.json
+  title: Amazon Organizations
+- type: JSONSchema
+  url: json-schema/openapi-account-schema.json
+  title: Openapi Account
+- type: JSONSchema
+  url: json-schema/openapi-organization-schema.json
+  title: Openapi Organization
+- type: JSONSchema
+  url: json-schema/openapi-organizational-unit-schema.json
+  title: Openapi Organizational Unit
+- type: JSONSchema
+  url: json-schema/openapi-policy-schema.json
+  title: Openapi Policy
+- type: Integrations
+  url: https://aws.amazon.com/partners/
+integrations:
+- name: Partner Programs
+- name: Resources
+- name: Success Stories
+- name: Work with an AWS Partner
+- name: AWS Marketplace
+- name: AWS Partner Central
+- name: Partner Paths
+- name: co-sell with AWS
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
+include: []
+x-parent: amazon-web-services
+x-relationship: product
